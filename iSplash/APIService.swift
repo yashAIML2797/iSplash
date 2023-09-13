@@ -16,7 +16,7 @@ class APIService {
         
     }
     
-    func fetchPhotos(pageNumber: Int) {
+    func fetchPhotos(pageNumber: Int, completion: @escaping (Page) -> Void) {
         let urlString = "https://api.unsplash.com/photos?page=\(pageNumber)"
         
         guard let url = URL(string: urlString) else {
@@ -41,11 +41,24 @@ class APIService {
             if let data = data {
                 do {
                     let photos = try JSONDecoder().decode([Photo].self, from: data)
-                    let _ = Page(number: pageNumber, photos: photos)
-                    print("Success")
+                    let page = Page(number: pageNumber, photos: photos)
+                    completion(page)
                 } catch {
                     print("Error - \(error.localizedDescription)")
                 }
+            }
+        }
+        task.resume()
+    }
+    
+    func fetchImage(from imageURL: String, completion: @escaping (Data) -> Void) {
+        guard let url = URL(string: imageURL) else {
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let data = data {
+                completion(data)
             }
         }
         task.resume()

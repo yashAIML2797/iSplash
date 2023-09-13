@@ -8,24 +8,39 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var photos = [Photo]()
+    
     var body: some View {
-        VStack {
-            Button {
-                APIService.shared.fetchPhotos(pageNumber: 1)
-            } label: {
-                HStack {
-                    Image(systemName: "globe")
-                        .imageScale(.large)
-                        .foregroundColor(.white)
-                    Text("Hello, world!")
+        GeometryReader { geo in
+            VStack {
+                ScrollView {
+                    VStack {
+                        ForEach(photos, id: \.id) { photo in
+                            VStack {
+                                AsyncImage(url: URL(string: photo.urls.regular)) { image in
+                                    image
+                                        .resizable()
+                                        .scaledToFill()
+                                } placeholder: {
+                                    Image(systemName: "photo")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: geo.size.width * 0.5, height: 150)
+                                }
+                            }
+                            .frame(width: geo.size.width, height: 300)
+                            .clipped()
+                        }
+                    }
                 }
-                .padding()
-                .background(Color.blue)
-                .cornerRadius(10)
             }
-            .tint(.white)
         }
         .padding()
+        .onAppear {
+            APIService.shared.fetchPhotos(pageNumber: 1) { page in
+                self.photos = page.photos
+            }
+        }
     }
 }
 
