@@ -10,6 +10,12 @@ import Foundation
 struct Photo: Decodable {
     let id: String
     let urls: ImageURL
+    let width: CGFloat
+    let height: CGFloat
+    
+    var size: CGSize {
+        CGSize(width: width, height: height)
+    }
 }
 
 struct ImageURL: Decodable {
