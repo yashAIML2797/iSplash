@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1EA0CC7D2AB42ABD00CB4394 /* FloatingTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA0CC7C2AB42ABD00CB4394 /* FloatingTabView.swift */; };
 		1EADEA752AB1E04F00FAA769 /* iSplashApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EADEA742AB1E04F00FAA769 /* iSplashApp.swift */; };
 		1EADEA772AB1E04F00FAA769 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EADEA762AB1E04F00FAA769 /* ContentView.swift */; };
 		1EADEA792AB1E05000FAA769 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EADEA782AB1E05000FAA769 /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1EA0CC7C2AB42ABD00CB4394 /* FloatingTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTabView.swift; sourceTree = "<group>"; };
 		1EADEA712AB1E04F00FAA769 /* iSplash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSplash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EADEA742AB1E04F00FAA769 /* iSplashApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iSplashApp.swift; sourceTree = "<group>"; };
 		1EADEA762AB1E04F00FAA769 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			children = (
 				1EADEA842AB1E79600FAA769 /* Model */,
 				1EADEA742AB1E04F00FAA769 /* iSplashApp.swift */,
+				1EA0CC7C2AB42ABD00CB4394 /* FloatingTabView.swift */,
 				1EADEA762AB1E04F00FAA769 /* ContentView.swift */,
 				1EADEA822AB1E49500FAA769 /* APIService.swift */,
 				1EADEA782AB1E05000FAA769 /* Assets.xcassets */,
@@ -158,6 +161,7 @@
 				1EADEA832AB1E49500FAA769 /* APIService.swift in Sources */,
 				1EADEA862AB1E80500FAA769 /* Page.swift in Sources */,
 				1EADEA752AB1E04F00FAA769 /* iSplashApp.swift in Sources */,
+				1EA0CC7D2AB42ABD00CB4394 /* FloatingTabView.swift in Sources */,
 				1EADEA882AB1E81A00FAA769 /* Photo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,6 +11,7 @@ struct ContentView: View {
     @State private var photos = [Photo]()
     @State private var currentPage = 1
     @State private var numberOfRows = 2
+    @State private var currentTab = 0
     
     var body: some View {
         NavigationStack {
@@ -58,7 +59,15 @@ struct ContentView: View {
                             .cornerRadius(10)
                     }
                     .padding()
+                    
+                    Rectangle()
+                        .fill(.clear)
+                        .frame(height: geo.size.height * 0.25)
                 }
+                
+                FloatingTabView(currentTab: $currentTab)
+                    .frame(width: geo.size.width * 0.8, height: 60)
+                    .position(x: geo.size.width * 0.5, y: geo.size.height - geo.safeAreaInsets.bottom)
             }
             .animation(.spring(response: 0.5, dampingFraction: 1), value: numberOfRows)
             .navigationTitle("iSplit")
