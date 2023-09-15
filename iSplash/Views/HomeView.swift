@@ -1,17 +1,17 @@
 //
-//  ContentView.swift
+//  HomeView.swift
 //  iSplash
 //
-//  Created by Yash Uttekar on 13/09/23.
+//  Created by Yash Uttekar on 15/09/23.
 //
 
 import SwiftUI
 
-struct ContentView: View {
+struct HomeView: View {
     @State private var photos = [Photo]()
     @State private var currentPage = 1
-    @State private var numberOfRows = 2
-    @State private var currentTab = 0
+    
+    @Binding var numberOfRows: Int
     
     var body: some View {
         NavigationStack {
@@ -64,10 +64,6 @@ struct ContentView: View {
                         .fill(.clear)
                         .frame(height: geo.size.height * 0.25)
                 }
-                
-                FloatingTabView(currentTab: $currentTab)
-                    .frame(width: geo.size.width * 0.8, height: 60)
-                    .position(x: geo.size.width * 0.5, y: geo.size.height - geo.safeAreaInsets.bottom)
             }
             .animation(.spring(response: 0.5, dampingFraction: 1), value: numberOfRows)
             .navigationTitle("iSplit")
@@ -134,8 +130,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        HomeView(numberOfRows: .constant(2))
     }
 }

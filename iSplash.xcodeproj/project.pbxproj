@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1EA0CC7D2AB42ABD00CB4394 /* FloatingTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA0CC7C2AB42ABD00CB4394 /* FloatingTabView.swift */; };
+		1EA0CC842AB4660000CB4394 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA0CC832AB4660000CB4394 /* HomeView.swift */; };
+		1EA0CC862AB4660A00CB4394 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA0CC852AB4660A00CB4394 /* SearchView.swift */; };
+		1EA0CC892AB4672300CB4394 /* View_Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA0CC882AB4672300CB4394 /* View_Ext.swift */; };
 		1EADEA752AB1E04F00FAA769 /* iSplashApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EADEA742AB1E04F00FAA769 /* iSplashApp.swift */; };
 		1EADEA772AB1E04F00FAA769 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EADEA762AB1E04F00FAA769 /* ContentView.swift */; };
 		1EADEA792AB1E05000FAA769 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EADEA782AB1E05000FAA769 /* Assets.xcassets */; };
@@ -19,6 +22,9 @@
 
 /* Begin PBXFileReference section */
 		1EA0CC7C2AB42ABD00CB4394 /* FloatingTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTabView.swift; sourceTree = "<group>"; };
+		1EA0CC832AB4660000CB4394 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		1EA0CC852AB4660A00CB4394 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		1EA0CC882AB4672300CB4394 /* View_Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View_Ext.swift; sourceTree = "<group>"; };
 		1EADEA712AB1E04F00FAA769 /* iSplash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSplash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EADEA742AB1E04F00FAA769 /* iSplashApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iSplashApp.swift; sourceTree = "<group>"; };
 		1EADEA762AB1E04F00FAA769 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -40,6 +46,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1EA0CC822AB465E800CB4394 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1EADEA762AB1E04F00FAA769 /* ContentView.swift */,
+				1EA0CC832AB4660000CB4394 /* HomeView.swift */,
+				1EA0CC852AB4660A00CB4394 /* SearchView.swift */,
+				1EA0CC7C2AB42ABD00CB4394 /* FloatingTabView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1EA0CC872AB4671400CB4394 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1EA0CC882AB4672300CB4394 /* View_Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		1EADEA682AB1E04F00FAA769 = {
 			isa = PBXGroup;
 			children = (
@@ -59,10 +84,10 @@
 		1EADEA732AB1E04F00FAA769 /* iSplash */ = {
 			isa = PBXGroup;
 			children = (
+				1EA0CC872AB4671400CB4394 /* Extensions */,
+				1EA0CC822AB465E800CB4394 /* Views */,
 				1EADEA842AB1E79600FAA769 /* Model */,
 				1EADEA742AB1E04F00FAA769 /* iSplashApp.swift */,
-				1EA0CC7C2AB42ABD00CB4394 /* FloatingTabView.swift */,
-				1EADEA762AB1E04F00FAA769 /* ContentView.swift */,
 				1EADEA822AB1E49500FAA769 /* APIService.swift */,
 				1EADEA782AB1E05000FAA769 /* Assets.xcassets */,
 				1EADEA7A2AB1E05000FAA769 /* Preview Content */,
@@ -158,8 +183,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EADEA772AB1E04F00FAA769 /* ContentView.swift in Sources */,
+				1EA0CC842AB4660000CB4394 /* HomeView.swift in Sources */,
+				1EA0CC892AB4672300CB4394 /* View_Ext.swift in Sources */,
 				1EADEA832AB1E49500FAA769 /* APIService.swift in Sources */,
 				1EADEA862AB1E80500FAA769 /* Page.swift in Sources */,
+				1EA0CC862AB4660A00CB4394 /* SearchView.swift in Sources */,
 				1EADEA752AB1E04F00FAA769 /* iSplashApp.swift in Sources */,
 				1EA0CC7D2AB42ABD00CB4394 /* FloatingTabView.swift in Sources */,
 				1EADEA882AB1E81A00FAA769 /* Photo.swift in Sources */,
