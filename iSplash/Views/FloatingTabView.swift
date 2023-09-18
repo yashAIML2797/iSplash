@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FloatingTabView: View {
-    @Binding var currentTab: Int
+    @Binding var numberOfColumns: Int
     
     var body: some View {
         GeometryReader { geo in
@@ -18,37 +18,42 @@ struct FloatingTabView: View {
                     .shadow(radius: 5)
                 
                 LinearGradient(colors: [.green, .indigo], startPoint: .topLeading, endPoint: .bottomTrailing)
-                    .frame(width: geo.size.width * 0.4, height: geo.size.height * 0.75)
+                    .frame(width: geo.size.width * 0.3, height: geo.size.height * 0.75)
                     .cornerRadius(10)
-                    .offset(x: geo.size.width * (currentTab == 0 ? -0.25 : 0.25))
+                    .offset(x: getHighlightOffset(for: geo.size.width))
                 
                 HStack(spacing: geo.size.width * 0.1) {
-                    Image(systemName: "house")
-                        .fontWeight(.semibold)
-                        .foregroundColor(currentTab == 0 ? .white: .black)
-                        .frame(width: geo.size.width * 0.4, height: geo.size.height * 0.75)
-//                        .background(
-//                            background(shouldHighlight: currentTab == 0)
-//                        )
+                    
+                    Image(systemName: numberOfColumns == 1 ? "rectangle.grid.1x2.fill" : "rectangle.grid.1x2")
+                        .font(.system(size: 20, weight: .semibold))
+                        .foregroundColor(numberOfColumns == 1 ? .white: .black)
+                        .frame(width: geo.size.width * 0.2, height: geo.size.height * 0.75)
                         .contentShape(Rectangle())
                         .onTapGesture {
-                            currentTab = 0
+                            numberOfColumns = 1
                         }
                     
-                    Image(systemName: "magnifyingglass")
-                        .fontWeight(.semibold)
-                        .foregroundColor(currentTab == 1 ? .white: .black)
-                        .frame(width: geo.size.width * 0.4, height: geo.size.height * 0.75)
-//                        .background(
-//                            background(shouldHighlight: currentTab == 1)
-//                        )
+                    Image(systemName: numberOfColumns == 2 ? "rectangle.grid.2x2.fill" : "rectangle.grid.2x2")
+                        .font(.system(size: 20, weight: .semibold))
+                        .foregroundColor(numberOfColumns == 2 ? .white: .black)
+                        .frame(width: geo.size.width * 0.2, height: geo.size.height * 0.75)
                         .contentShape(Rectangle())
                         .onTapGesture {
-                            currentTab = 1
+                            numberOfColumns = 2
+                        }
+                    
+                    Image(systemName: numberOfColumns == 3 ? "rectangle.grid.3x2.fill" : "rectangle.grid.3x2")
+                        .font(.system(size: 20, weight: .semibold))
+                        .foregroundColor(numberOfColumns == 3 ? .white: .black)
+                        .frame(width: geo.size.width * 0.2, height: geo.size.height * 0.75)
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            numberOfColumns = 3
                         }
                 }
+                .padding(.horizontal, geo.size.width * 0.1)
             }
-            .animation(.easeOut, value: currentTab)
+            .animation(.easeOut, value: numberOfColumns)
         }
     }
     
@@ -60,10 +65,23 @@ struct FloatingTabView: View {
             Color.clear
         }
     }
+    
+    private func getHighlightOffset(for availableWidth: CGFloat) -> CGFloat {
+        switch numberOfColumns {
+        case 1:
+            return -availableWidth * 0.3
+        case 2:
+            return 0
+        case 3:
+            return availableWidth * 0.3
+        default:
+            return 0
+        }
+    }
 }
 
 struct FloatingTabView_Previews: PreviewProvider {
     static var previews: some View {
-        FloatingTabView(currentTab: .constant(0))
+        FloatingTabView(numberOfColumns: .constant(1))
     }
 }
