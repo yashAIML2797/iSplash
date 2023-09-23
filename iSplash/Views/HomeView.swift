@@ -10,14 +10,13 @@ import SwiftUI
 struct HomeView: View {
     @State private var photos = [Photo]()
     @State private var currentPage = 1
-    
-    @Binding var numberOfRows: Int
+    @State private var numberOfColumns = 2
     
     var body: some View {
         NavigationStack {
             GeometryReader { geo in
                 ScrollView {
-                    LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: numberOfRows),
+                    LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: numberOfColumns),
                               spacing: 5
                     ) {
                         ForEach(photos, id: \.id) { photo in
@@ -65,29 +64,29 @@ struct HomeView: View {
                         .frame(height: geo.size.height * 0.25)
                 }
             }
-            .animation(.spring(response: 0.5, dampingFraction: 1), value: numberOfRows)
+            .animation(.spring(response: 0.5, dampingFraction: 1), value: numberOfColumns)
             .navigationTitle("iSplit")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     HStack {
                         Button {
-                            numberOfRows = 1
+                            numberOfColumns = 1
                         } label: {
-                            Image(systemName: numberOfRows == 1 ? "rectangle.grid.1x2.fill" : "rectangle.grid.1x2")
+                            Image(systemName: numberOfColumns == 1 ? "rectangle.grid.1x2.fill" : "rectangle.grid.1x2")
                                 .fontWeight(.semibold)
                                 .foregroundColor(.black)
                         }
                         Button {
-                            numberOfRows = 2
+                            numberOfColumns = 2
                         } label: {
-                            Image(systemName: numberOfRows == 2 ? "rectangle.grid.2x2.fill" : "rectangle.grid.2x2")
+                            Image(systemName: numberOfColumns == 2 ? "rectangle.grid.2x2.fill" : "rectangle.grid.2x2")
                                 .fontWeight(.semibold)
                                 .foregroundColor(.black)
                         }
                         Button {
-                            numberOfRows = 3
+                            numberOfColumns = 3
                         } label: {
-                            Image(systemName: numberOfRows == 3 ? "rectangle.grid.3x2.fill" : "rectangle.grid.3x2")
+                            Image(systemName: numberOfColumns == 3 ? "rectangle.grid.3x2.fill" : "rectangle.grid.3x2")
                                 .fontWeight(.semibold)
                                 .foregroundColor(.black)
                         }
@@ -107,14 +106,14 @@ struct HomeView: View {
     }
     
     private func getCellSize(for photo: CGSize, scrollWidth: CGFloat) -> CGSize {
-        let cellWidth:  CGFloat = (scrollWidth - 20) / CGFloat(numberOfRows)
+        let cellWidth:  CGFloat = (scrollWidth - 20) / CGFloat(numberOfColumns)
         var cellHeight: CGFloat = .zero
         
-        switch numberOfRows {
+        switch numberOfColumns {
         case 1:
             cellHeight = (photo.height * cellWidth) / photo.width
         default:
-            cellHeight = (scrollWidth - 10) / CGFloat(numberOfRows)
+            cellHeight = (scrollWidth - 10) / CGFloat(numberOfColumns)
         }
         
         return CGSize(width: cellWidth, height: cellHeight)
@@ -123,6 +122,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(numberOfRows: .constant(2))
+        HomeView()
     }
 }

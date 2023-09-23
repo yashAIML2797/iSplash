@@ -16,13 +16,13 @@ struct ContentView: View {
         GeometryReader { geo in
             ZStack {
                 TabView(selection: $currentTab) {
-                    HomeView(numberOfRows: $numberOfColumns)
+                    HomeView()
                         .tabItem {
                             Label("Home", systemImage: "house")
                         }
                     
                     
-                    SearchView(numberOfRows: $numberOfColumns)
+                    SearchView()
                         .tabItem {
                             Label("Search", systemImage: "magnifyingglass")
                         }
