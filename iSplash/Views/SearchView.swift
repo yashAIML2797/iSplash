@@ -17,17 +17,7 @@ struct SearchView: View {
             GeometryReader { geo in
                 
             }
-            .navigationTitle("iSplit")
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        //
-                    } label: {
-                        Image(systemName: "magnifyingglass")
-                            .fontWeight(.semibold)
-                            .foregroundColor(.black)
-                    }
-                }
                 ToolbarItem(placement: .navigationBarLeading) {
                     HStack {
                         Button {

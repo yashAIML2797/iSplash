@@ -68,15 +68,6 @@ struct HomeView: View {
             .animation(.spring(response: 0.5, dampingFraction: 1), value: numberOfRows)
             .navigationTitle("iSplit")
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        //
-                    } label: {
-                        Image(systemName: "magnifyingglass")
-                            .fontWeight(.semibold)
-                            .foregroundColor(.black)
-                    }
-                }
                 ToolbarItem(placement: .navigationBarLeading) {
                     HStack {
                         Button {
