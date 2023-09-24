@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E1FE61D2ABFF5860071E0E0 /* ShimmerEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1FE61C2ABFF5860071E0E0 /* ShimmerEffect.swift */; };
 		1E9D78122ABFD15700B24F11 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9D78112ABFD15700B24F11 /* ActivityIndicatorView.swift */; };
 		1E9D78142ABFD24E00B24F11 /* LoadMoreButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9D78132ABFD24E00B24F11 /* LoadMoreButtonView.swift */; };
 		1E9D78162ABFD41B00B24F11 /* SwitchColumnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9D78152ABFD41B00B24F11 /* SwitchColumnView.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E1FE61C2ABFF5860071E0E0 /* ShimmerEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerEffect.swift; sourceTree = "<group>"; };
 		1E9D78112ABFD15700B24F11 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		1E9D78132ABFD24E00B24F11 /* LoadMoreButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMoreButtonView.swift; sourceTree = "<group>"; };
 		1E9D78152ABFD41B00B24F11 /* SwitchColumnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchColumnView.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 				1E9D78112ABFD15700B24F11 /* ActivityIndicatorView.swift */,
 				1E9D78132ABFD24E00B24F11 /* LoadMoreButtonView.swift */,
 				1E9D78152ABFD41B00B24F11 /* SwitchColumnView.swift */,
+				1E1FE61C2ABFF5860071E0E0 /* ShimmerEffect.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 			files = (
 				1E9D78162ABFD41B00B24F11 /* SwitchColumnView.swift in Sources */,
 				1EADEA772AB1E04F00FAA769 /* ContentView.swift in Sources */,
+				1E1FE61D2ABFF5860071E0E0 /* ShimmerEffect.swift in Sources */,
 				1E9D78122ABFD15700B24F11 /* ActivityIndicatorView.swift in Sources */,
 				1EA0CC842AB4660000CB4394 /* HomeView.swift in Sources */,
 				1EBCA05F2AB7856C00E97CC2 /* SearchResult.swift in Sources */,

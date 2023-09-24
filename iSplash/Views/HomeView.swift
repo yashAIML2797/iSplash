@@ -29,11 +29,7 @@ struct HomeView: View {
                                     .resizable()
                                     .scaledToFill()
                             } placeholder: {
-                                Image(systemName: "photo")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: cellSize.width * 0.5, height: cellSize.height * 0.5)
-                            }
+                                ShimmerEffect()                            }
                             .frame(width: cellSize.width, height: cellSize.height)
                             .cornerRadius(10)
                             .clipped()
