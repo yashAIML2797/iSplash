@@ -42,65 +42,30 @@ struct HomeView: View {
                     .padding(.horizontal, 10)
                     
                     if !photos.isEmpty {
-                        if isLoading {
-                            ProgressView()
-                                .padding()
-                        } else {
-                            Button {
-                                isLoading = true
-                                currentPage += 1
-                                APIService.shared.fetchPhotos(pageNumber: currentPage) { page in
-                                    for photo in page.photos {
-                                        if !self.photos.contains(where: {$0.id == photo.id}) {
-                                            self.photos.append(photo)
-                                        }
+                        LoadMoreButtonView(isLoading: $isLoading) {
+                            isLoading = true
+                            currentPage += 1
+                            APIService.shared.fetchPhotos(pageNumber: currentPage) { page in
+                                for photo in page.photos {
+                                    if !self.photos.contains(where: {$0.id == photo.id}) {
+                                        self.photos.append(photo)
                                     }
-                                    self.isLoading = false
                                 }
-                            } label: {
-                                Text("Load More")
-                                    .font(.system(size: 18, weight: .semibold))
-                                    .foregroundColor(.white)
-                                    .padding(10)
-                                    .background(.black)
-                                    .cornerRadius(10)
+                                self.isLoading = false
                             }
-                            .padding()
                         }
-                        
-                        Rectangle()
-                            .fill(.clear)
-                            .frame(height: geo.size.height * 0.25)
                     }
+                    
+                    Rectangle()
+                        .fill(.clear)
+                        .frame(height: geo.size.height * 0.25)
                 }
             }
             .animation(.spring(response: 0.5, dampingFraction: 1), value: numberOfColumns)
             .navigationTitle("iSplit")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    HStack {
-                        Button {
-                            numberOfColumns = 1
-                        } label: {
-                            Image(systemName: numberOfColumns == 1 ? "rectangle.grid.1x2.fill" : "rectangle.grid.1x2")
-                                .fontWeight(.semibold)
-                                .foregroundColor(.black)
-                        }
-                        Button {
-                            numberOfColumns = 2
-                        } label: {
-                            Image(systemName: numberOfColumns == 2 ? "rectangle.grid.2x2.fill" : "rectangle.grid.2x2")
-                                .fontWeight(.semibold)
-                                .foregroundColor(.black)
-                        }
-                        Button {
-                            numberOfColumns = 3
-                        } label: {
-                            Image(systemName: numberOfColumns == 3 ? "rectangle.grid.3x2.fill" : "rectangle.grid.3x2")
-                                .fontWeight(.semibold)
-                                .foregroundColor(.black)
-                        }
-                    }
+                    ColumnView(numberOfColumns: $numberOfColumns)
                 }
             }
         }
