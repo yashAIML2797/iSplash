@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ColumnView: View {
+struct SwitchColumnView: View {
     @Binding var numberOfColumns: Int
     
     var body: some View {

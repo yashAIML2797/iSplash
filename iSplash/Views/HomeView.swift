@@ -65,7 +65,7 @@ struct HomeView: View {
             .navigationTitle("iSplit")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    ColumnView(numberOfColumns: $numberOfColumns)
+                    SwitchColumnView(numberOfColumns: $numberOfColumns)
                 }
             }
         }

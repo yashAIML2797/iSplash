@@ -20,6 +20,14 @@ struct SearchView: View {
     var body: some View {
         NavigationStack {
             GeometryReader { geo in
+                if photos.isEmpty {
+                    Image("Explore")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: geo.size.width * 0.5, height: geo.size.width * 0.5)
+                        .position(x: geo.size.width * 0.5, y: (geo.size.height * 0.5) - 50)
+                }
+                
                 ScrollView {
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: numberOfColumns),
                               spacing: 5
@@ -71,7 +79,7 @@ struct SearchView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    ColumnView(numberOfColumns: $numberOfColumns)
+                    SwitchColumnView(numberOfColumns: $numberOfColumns)
                 }
             }
         }
