@@ -14,6 +14,7 @@ struct SearchView: View {
     @State private var numberOfColumns = 2
     @State private var isLoading = false
     @State private var isSearching = false
+    @State private var currentShowingResultsSearchQuery = ""
     
     @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -54,7 +55,7 @@ struct SearchView: View {
                         LoadMoreButtonView(isLoading: $isLoading) {
                             currentPage += 1
                             isLoading = true
-                            APIService.shared.fetchSearchResults(for: self.searchText, pageNumber: currentPage) { searcResult in
+                            APIService.shared.fetchSearchResults(for: self.currentShowingResultsSearchQuery, pageNumber: currentPage) { searcResult in
                                 for photo in searcResult.results {
                                     if !self.photos.contains(where: {$0.id == photo.id}) {
                                         self.photos.append(photo)
@@ -88,6 +89,7 @@ struct SearchView: View {
         .onReceive(timer) { _ in
             if !searchText.isEmpty {
                 APIService.shared.fetchSearchResults(for: searchText, pageNumber: currentPage) { searcResult in
+                    self.currentShowingResultsSearchQuery = searchText
                     self.photos = []
                     self.isSearching = false
                     for photo in searcResult.results {
