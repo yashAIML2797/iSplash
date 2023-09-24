@@ -11,6 +11,7 @@ struct HomeView: View {
     @State private var photos = [Photo]()
     @State private var currentPage = 1
     @State private var numberOfColumns = 2
+    @State private var isLoading = false
     
     var body: some View {
         NavigationStack {
@@ -40,28 +41,37 @@ struct HomeView: View {
                     }
                     .padding(.horizontal, 10)
                     
-                    Button {
-                        currentPage += 1
-                        APIService.shared.fetchPhotos(pageNumber: currentPage) { page in
-                            for photo in page.photos {
-                                if !self.photos.contains(where: {$0.id == photo.id}) {
-                                    self.photos.append(photo)
+                    if !photos.isEmpty {
+                        if isLoading {
+                            ProgressView()
+                                .padding()
+                        } else {
+                            Button {
+                                isLoading = true
+                                currentPage += 1
+                                APIService.shared.fetchPhotos(pageNumber: currentPage) { page in
+                                    for photo in page.photos {
+                                        if !self.photos.contains(where: {$0.id == photo.id}) {
+                                            self.photos.append(photo)
+                                        }
+                                    }
+                                    self.isLoading = false
                                 }
+                            } label: {
+                                Text("Load More")
+                                    .font(.system(size: 18, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .padding(10)
+                                    .background(.black)
+                                    .cornerRadius(10)
                             }
+                            .padding()
                         }
-                    } label: {
-                        Text("Load More")
-                            .font(.system(size: 18, weight: .semibold))
-                            .foregroundColor(.white)
-                            .padding(10)
-                            .background(.black)
-                            .cornerRadius(10)
+                        
+                        Rectangle()
+                            .fill(.clear)
+                            .frame(height: geo.size.height * 0.25)
                     }
-                    .padding()
-                    
-                    Rectangle()
-                        .fill(.clear)
-                        .frame(height: geo.size.height * 0.25)
                 }
             }
             .animation(.spring(response: 0.5, dampingFraction: 1), value: numberOfColumns)
